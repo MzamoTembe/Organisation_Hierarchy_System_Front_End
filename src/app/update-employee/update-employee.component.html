@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <h1 class="mb-4">Update Employee</h1>
+    <form class="row" [formGroup]="EmployeeForm" (ngSubmit)="updateEmployee()">
+        <div class="form-group col-6">
+            <label> Profile Picture </label>
+            <div class="row mb-4">
+                <div class="col-md-2">
+                  <img [src]="gravatarUrl" alt="Gravatar" class="img-thumbnail"/>
+                </div>
+            </div>
+            <div *ngIf="gravatarImages.length > 0" class="row mb-4">
+                <label> Available Pictures </label>
+                <div *ngFor="let image of gravatarImages" class="col-md-2">
+                  <img [src]="generateGravatarUrl(image)" alt="Gravatar" class="img-thumbnail" (click)="selectImage(image)"/>
+                </div>
+            </div>
+            <app-text-input [label]="'Name'" [formControl]="EmployeeForm.controls['name']"></app-text-input>
+            <app-text-input [label]="'Surname'" [formControl]="EmployeeForm.controls['surname']"></app-text-input>
+            <app-text-input [label]="'BirthDate'" [type]="'date'" [formControl]="EmployeeForm.controls['birthDate']"></app-text-input>
+            <app-text-input [label]="'Salary'" [type]="'number'" [formControl]="EmployeeForm.controls['salary']"></app-text-input>
+            <app-text-input [label]="'Employee Number'" [type]="'number'" [formControl]="EmployeeForm.controls['employeeNum']"></app-text-input>
+            <label> Roles </label>
+            <select class="form-select" (change)="onRoleSelected($event)">
+                <option *ngFor="let role of employeeRoles" [value]="role.id"> 
+                    {{role.name}}
+                </option>
+            </select> 
+            <label> Managers </label>
+            <select class="form-select mb-4" (change)="onManagerSelected($event)">
+                <option *ngFor="let manager of managers" [value]="manager.id"> 
+                    {{manager.name}}
+                </option>
+            </select> 
+        </div>
+        <ul class="text-danger list-unstyled" *ngIf="errors">
+            <li *ngFor="let error of errors">
+                {{error}}
+            </li>
+        </ul>
+        <div>
+            <button [disabled]="!EmployeeForm.valid" class="btn btn-primary" type="submit">Update</button>
+        </div>
+    </form>
+</div>

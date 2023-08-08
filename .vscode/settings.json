@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8f494176-de17-4950-acd3-0f4f85def942/resourceGroups/OrganisationHierarchySystem/providers/Microsoft.Web/sites/Organisation-Hierarchy-System",
+    "appService.deploySubpath": "dist\\organisation-hierarchy-system"
+}

@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Employee Hierarchy</h1>
+    <ng-container *ngTemplateOutlet="recursiveNode; context: { node: rootNodeData }"></ng-container>
+  </div>
+  <ng-template #recursiveNode let-node="node">
+    <ul class="hierarchy-tree" *ngIf="node">
+      <li class="hierarchy-node">
+        <span class="employee-name">{{ node.managerName }}</span>
+        <ng-container *ngIf="node.employees && node.employees.length > 0">
+          <ng-container *ngFor="let employee of node.employees">
+            <ng-container *ngTemplateOutlet="recursiveNode; context: { node: employee }"></ng-container>
+          </ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </ng-template>
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  

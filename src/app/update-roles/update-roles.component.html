@@ -1,0 +1,17 @@
+<div class="container mt-4">
+    <h1 class="mb-4">Update Employee Role</h1>
+    <form class="row" [formGroup]="RoleForm" (ngSubmit)="updateRole()">
+        <div class="form-group col-6">
+            <app-text-input [label]="'Name'" [formControl]="RoleForm.controls['name']"></app-text-input>
+            <app-text-input [label]="'Description'" [formControl]="RoleForm.controls['description']"></app-text-input>
+        </div>
+        <ul class="text-danger list-unstyled" *ngIf="errors">
+            <li *ngFor="let error of errors">
+                {{error}}
+            </li>
+        </ul>
+        <div>
+            <button [disabled]="!RoleForm.valid" class="btn btn-primary" type="submit">Update</button>
+        </div>
+    </form>
+</div>
